@@ -22,7 +22,7 @@ function social_good_organizations_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Social Good NGOs';
+  $handler->display->display_options['title'] = 'Social Good Organizations';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -68,7 +68,7 @@ function social_good_organizations_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'non_governmental_organization' => 'non_governmental_organization',
+    'social_good_organization' => 'social_good_organization',
   );
   /* Filter criterion: Content: Country (field_contry) */
   $handler->display->display_options['filters']['field_contry_tid']['id'] = 'field_contry_tid';
@@ -139,9 +139,9 @@ function social_good_organizations_views_default_views() {
 ';
   $handler->display->display_options['path'] = 'social-good';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Archive of Social Good';
-  $handler->display->display_options['menu']['description'] = 'Search the archive';
+  $handler->display->display_options['menu']['title'] = 'Social Good Organizations';
   $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
@@ -320,40 +320,6 @@ function social_good_organizations_views_default_views() {
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
-  );
-  $translatables['social_good_ngos'] = array(
-    t('Master'),
-    t('Social Good NGOs'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Country'),
-    t('Population Served'),
-    t('Primary Mission'),
-    t('Page'),
-    t('Welcome to the Archive of Social Good'),
-    t('Select the country, population, or mission of the site that is of interest.  You can make multiple selections, but the database is limited at this point and you may not get any results.  Selecting a result site will lead you to a page with more information and a web link.
-'),
-    t('Feed'),
-    t('CSV export'),
-    t('Description'),
-    t('Contact'),
-    t('Email'),
-    t('Mission'),
-    t('Secondary Mission'),
-    t('Tertiary Mission'),
-    t('Website'),
-    t('XLS export'),
   );
   $export['social_good_ngos'] = $view;
 
