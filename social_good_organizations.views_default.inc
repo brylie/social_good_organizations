@@ -12,17 +12,17 @@ function social_good_organizations_views_default_views() {
 
   $view = new view();
   $view->name = 'social_good_ngos';
-  $view->description = '';
+  $view->description = 'Displays a list of Social Good Organizations, along with corresponding export options (CSV, XLS).';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Social Good NGOs';
+  $view->human_name = 'Social Good Organizations';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Social Good NGOs';
+  $handler->display->display_options['title'] = 'Social Good Organizations';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -322,6 +322,91 @@ function social_good_organizations_views_default_views() {
   $handler->display->display_options['fields']['field_website_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_website_link']['type'] = 'link_plain';
   $handler->display->display_options['path'] = 'social-good/xls';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+
+  /* Display: XML export */
+  $handler = $view->new_display('views_data_export', 'XML export', 'views_data_export_2');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xml';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['transform'] = 1;
+  $handler->display->display_options['style_options']['transform_type'] = 'underline';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Description';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Content: Contact */
+  $handler->display->display_options['fields']['field_contact']['id'] = 'field_contact';
+  $handler->display->display_options['fields']['field_contact']['table'] = 'field_data_field_contact';
+  $handler->display->display_options['fields']['field_contact']['field'] = 'field_contact';
+  $handler->display->display_options['fields']['field_contact']['element_label_colon'] = FALSE;
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_contry']['id'] = 'field_contry';
+  $handler->display->display_options['fields']['field_contry']['table'] = 'field_data_field_contry';
+  $handler->display->display_options['fields']['field_contry']['field'] = 'field_contry';
+  $handler->display->display_options['fields']['field_contry']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contry']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Email */
+  $handler->display->display_options['fields']['field_contact_email']['id'] = 'field_contact_email';
+  $handler->display->display_options['fields']['field_contact_email']['table'] = 'field_data_field_contact_email';
+  $handler->display->display_options['fields']['field_contact_email']['field'] = 'field_contact_email';
+  $handler->display->display_options['fields']['field_contact_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contact_email']['type'] = 'text_plain';
+  /* Field: Content: Mission */
+  $handler->display->display_options['fields']['field_mission']['id'] = 'field_mission';
+  $handler->display->display_options['fields']['field_mission']['table'] = 'field_data_field_mission';
+  $handler->display->display_options['fields']['field_mission']['field'] = 'field_mission';
+  $handler->display->display_options['fields']['field_mission']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mission']['type'] = 'text_plain';
+  /* Field: Content: Population Served */
+  $handler->display->display_options['fields']['field_population_served']['id'] = 'field_population_served';
+  $handler->display->display_options['fields']['field_population_served']['table'] = 'field_data_field_population_served';
+  $handler->display->display_options['fields']['field_population_served']['field'] = 'field_population_served';
+  $handler->display->display_options['fields']['field_population_served']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_population_served']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Primary Mission */
+  $handler->display->display_options['fields']['field_primary_mission']['id'] = 'field_primary_mission';
+  $handler->display->display_options['fields']['field_primary_mission']['table'] = 'field_data_field_primary_mission';
+  $handler->display->display_options['fields']['field_primary_mission']['field'] = 'field_primary_mission';
+  $handler->display->display_options['fields']['field_primary_mission']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_primary_mission']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Secondary Mission */
+  $handler->display->display_options['fields']['field_2nd_mission']['id'] = 'field_2nd_mission';
+  $handler->display->display_options['fields']['field_2nd_mission']['table'] = 'field_data_field_2nd_mission';
+  $handler->display->display_options['fields']['field_2nd_mission']['field'] = 'field_2nd_mission';
+  $handler->display->display_options['fields']['field_2nd_mission']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_2nd_mission']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Tertiary Mission */
+  $handler->display->display_options['fields']['field_3rd_mission']['id'] = 'field_3rd_mission';
+  $handler->display->display_options['fields']['field_3rd_mission']['table'] = 'field_data_field_3rd_mission';
+  $handler->display->display_options['fields']['field_3rd_mission']['field'] = 'field_3rd_mission';
+  $handler->display->display_options['fields']['field_3rd_mission']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_3rd_mission']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Website */
+  $handler->display->display_options['fields']['field_website_link']['id'] = 'field_website_link';
+  $handler->display->display_options['fields']['field_website_link']['table'] = 'field_data_field_website_link';
+  $handler->display->display_options['fields']['field_website_link']['field'] = 'field_website_link';
+  $handler->display->display_options['fields']['field_website_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_website_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_website_link']['type'] = 'link_plain';
+  $handler->display->display_options['path'] = 'social-good/xml';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
