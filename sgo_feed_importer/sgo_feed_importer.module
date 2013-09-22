@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the SGO feed importer feature.
+ */
+
+include_once 'sgo_feed_importer.features.inc';

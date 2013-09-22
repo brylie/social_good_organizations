@@ -1,0 +1,11 @@
+name = SGO feed importer
+description = Use Feeds to import the archive of Social Good Orgaanizations (CSV).
+core = 7.x
+package = Social Good Organizations
+version = 7.x-0.2
+project = sgo_feed_importer
+dependencies[] = ctools
+dependencies[] = feeds
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:2
+features[feeds_importer][] = social_good_organizations_importer
