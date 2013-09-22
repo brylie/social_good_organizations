@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Social Good Organizations feature.
- */
-
-include_once 'social_good_organizations.features.inc';
