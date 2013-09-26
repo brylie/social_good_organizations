@@ -51,6 +51,14 @@ function sgo_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Mission */
+  $handler->display->display_options['fields']['field_mission']['id'] = 'field_mission';
+  $handler->display->display_options['fields']['field_mission']['table'] = 'field_data_field_mission';
+  $handler->display->display_options['fields']['field_mission']['field'] = 'field_mission';
+  $handler->display->display_options['fields']['field_mission']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_mission']['settings'] = array(
+    'trim_length' => '250',
+  );
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -106,6 +114,22 @@ function sgo_views_views_default_views() {
   $handler->display->display_options['filters']['field_primary_mission_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_primary_mission_tid']['vocabulary'] = 'primary_mission';
   $handler->display->display_options['filters']['field_primary_mission_tid']['error_message'] = FALSE;
+  /* Filter criterion: Content: Country (field_country) */
+  $handler->display->display_options['filters']['field_country_tid']['id'] = 'field_country_tid';
+  $handler->display->display_options['filters']['field_country_tid']['table'] = 'field_data_field_country';
+  $handler->display->display_options['filters']['field_country_tid']['field'] = 'field_country_tid';
+  $handler->display->display_options['filters']['field_country_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_country_tid']['expose']['operator_id'] = 'field_country_tid_op';
+  $handler->display->display_options['filters']['field_country_tid']['expose']['label'] = 'Country (field_country)';
+  $handler->display->display_options['filters']['field_country_tid']['expose']['operator'] = 'field_country_tid_op';
+  $handler->display->display_options['filters']['field_country_tid']['expose']['identifier'] = 'field_country_tid';
+  $handler->display->display_options['filters']['field_country_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_country_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_country_tid']['vocabulary'] = 'country';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -118,6 +142,38 @@ function sgo_views_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['header']['area_text_custom']['content'] = 'Select the country, population, or mission of the site that is of interest.  You can make multiple selections, but the database is limited at this point and you may not get any results.  Selecting a result site will lead you to a page with more information and a web link.
 ';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Mission */
+  $handler->display->display_options['fields']['field_mission']['id'] = 'field_mission';
+  $handler->display->display_options['fields']['field_mission']['table'] = 'field_data_field_mission';
+  $handler->display->display_options['fields']['field_mission']['field'] = 'field_mission';
+  $handler->display->display_options['fields']['field_mission']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_mission']['settings'] = array(
+    'trim_length' => '250',
+  );
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
+  /* Field: Content: Population Served */
+  $handler->display->display_options['fields']['field_population_served']['id'] = 'field_population_served';
+  $handler->display->display_options['fields']['field_population_served']['table'] = 'field_data_field_population_served';
+  $handler->display->display_options['fields']['field_population_served']['field'] = 'field_population_served';
+  $handler->display->display_options['fields']['field_population_served']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_population_served']['element_label_colon'] = FALSE;
+  /* Field: Content: Primary Mission */
+  $handler->display->display_options['fields']['field_primary_mission']['id'] = 'field_primary_mission';
+  $handler->display->display_options['fields']['field_primary_mission']['table'] = 'field_data_field_primary_mission';
+  $handler->display->display_options['fields']['field_primary_mission']['field'] = 'field_primary_mission';
+  $handler->display->display_options['fields']['field_primary_mission']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_primary_mission']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'social-good';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Social Good Organizations';

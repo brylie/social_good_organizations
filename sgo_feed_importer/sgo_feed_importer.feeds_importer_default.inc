@@ -45,7 +45,7 @@ function sgo_feed_importer_feeds_importer_default() {
           0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 1,
           ),
           1 => array(
             'source' => 'description',
@@ -58,48 +58,49 @@ function sgo_feed_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'country',
-            'target' => 'field_contry',
-            'unique' => FALSE,
-          ),
-          4 => array(
             'source' => 'email',
             'target' => 'field_contact_email',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'mission',
             'target' => 'field_mission',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'population_served',
             'target' => 'field_population_served',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          7 => array(
+          6 => array(
             'source' => 'primary_mission',
             'target' => 'field_primary_mission',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          8 => array(
+          7 => array(
             'source' => 'secondary_mission',
             'target' => 'field_2nd_mission',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          9 => array(
+          8 => array(
             'source' => 'tertiary_mission',
             'target' => 'field_3rd_mission',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          10 => array(
+          9 => array(
             'source' => 'website',
             'target' => 'field_website_link:url',
             'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'country',
+            'target' => 'field_country',
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
         ),
         'update_existing' => '1',
